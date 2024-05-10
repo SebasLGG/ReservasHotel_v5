@@ -135,7 +135,7 @@ public class CVentanaInsertarReservas {
     void insertar(ActionEvent event) {
     	/*ESTE SERÍA LA FORMA CORRECTA PARA INSERTAR EL HUÉSPED PARA QUE CON SOLO INDICAR EL DNI ME RELLENE EL RESTO DE DATOS AUTOMATICAMENTE
          * PERO EL PROGRAMA EMPIEZA A IR LENTO Y ME DICE QUE NO RESPONDE AUNQUE FUNCIONE. */
-        /*Huesped huesped= VistaGrafica.getInstancia().getControlador().buscar(new Huesped("aa", Dni.getText(), "asdf@fdsad.xom", "999223344", LocalDate.of(1999,12,12)));
+        /*Huesped huesped= VistaGrafica.getInstancia().getControlador().buscar(new Huesped("aaaa", Dni.getText(), "aaaf@gmail.com", "666266664", LocalDate.of(1999,11,05)));
         */
         Huesped huesped= VistaGrafica.getInstancia().getControlador().buscar(new Huesped(Nombre.getText(), Dni.getText(), Correo.getText(), Telefono.getText(), FechaNacimiento.getValue()));
 
