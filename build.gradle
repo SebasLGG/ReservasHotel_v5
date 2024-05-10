@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'application' // Agregamos el plugin application para ejecutar la aplicación
+    id 'org.openjfx.javafxplugin' version '0.0.10' // Plugin para JavaFX
 }
 
 group = 'org.example'
@@ -7,7 +9,6 @@ version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
-    // Repositorio jitpack.io donde están los accesos a las versiones de la librería entrada desde github
     maven { url 'https://jitpack.io' }
 }
 
@@ -15,13 +16,20 @@ dependencies {
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation 'org.junit.platform:junit-platform-suite-engine:1.9.1'
-    // Entrada para que el repositorio jitpack.io sepa acceder a la localización de librería entrada
     implementation 'com.github.JRJimenezReyes:entrada:1.0.3'
-
-    // MogoDB Driver
     implementation 'org.mongodb:mongodb-driver-sync:4.4.2'
+    
+    // Dependencias de JavaFX
+    implementation 'org.openjfx:javafx-controls:16.0.2'
+    implementation 'org.openjfx:javafx-fxml:16.0.2'
 }
 
-test {
-    useJUnitPlatform()
+javafx {
+    version = "16.0.2" // Versión de JavaFX
+    modules = [ 'javafx.controls', 'javafx.fxml' ] // Módulos de JavaFX que se van a utilizar
+}
+
+application {
+    // Configuración de la aplicación
+    mainClassName = 'com.example.MainApp' // Clase principal de la aplicación
 }

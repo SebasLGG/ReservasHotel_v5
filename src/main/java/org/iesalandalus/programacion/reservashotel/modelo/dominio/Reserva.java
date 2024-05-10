@@ -116,9 +116,6 @@ public class Reserva {
         if (fechaInicioReserva == null) {
             throw new NullPointerException("ERROR: La fecha de inicio de una reserva no puede ser nula.");
         }
-        if (fechaInicioReserva.isBefore(LocalDate.now())) {
-            throw new IllegalArgumentException("ERROR: La fecha de inicio de la reserva no puede ser anterior al día de hoy.");
-        }
         if (fechaInicioReserva.isAfter(LocalDate.now().plusMonths(MAX_NUMERO_MESES_RESERVA))) {
             throw new IllegalArgumentException("ERROR: La fecha de inicio de la reserva no puede ser posterior a seis meses.");
         }
