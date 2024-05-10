@@ -4,20 +4,17 @@ import org.iesalandalus.programacion.reservashotel.modelo.IModelo;
 import org.iesalandalus.programacion.reservashotel.modelo.dominio.*;
 import org.iesalandalus.programacion.reservashotel.vista.*;
 
+
 import java.time.LocalDateTime;
 import java.util.List;
 
 
 public class Controlador {
 
-    private IModelo modelo;
+	private IModelo modelo;
     private Vista vista;
 
-    // Constructor que recibe instancias de Modelo y Vista
     public Controlador(IModelo modelo, Vista vista) {
-        if (modelo == null || vista == null) {
-            throw new IllegalArgumentException("ERROR: El modelo y la vista no pueden ser nulos.");
-        }
         this.modelo = modelo;
         this.vista = vista;
         vista.setControlador(this);
