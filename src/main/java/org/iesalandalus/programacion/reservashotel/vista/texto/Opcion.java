@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.reservashotel.vista;
+package org.iesalandalus.programacion.reservashotel.vista.texto;
 import org.iesalandalus.programacion.reservashotel.modelo.dominio.TipoHabitacion;
 
 //Enumerado opcion llamando cada opcion a la instancia estática de `Vista`correspondiente
@@ -96,14 +96,14 @@ public enum Opcion {
     
 
     private String mensajeAMostrar;
-    private static Vista vista;
+    private static VistaTexto vista;
 
     private Opcion(String mensajeAMostrar) {
         this.mensajeAMostrar = mensajeAMostrar;
     }
     
     // Método para establecer la instancia de Vista
-    public static void setVista(Vista vista) {
+    public static void setVista(VistaTexto vista) {
         Opcion.vista = vista;
     }
     

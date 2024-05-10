@@ -26,10 +26,10 @@ dependencies {
 
 javafx {
     version = "16.0.2" // Versión de JavaFX
-    modules = [ 'javafx.controls', 'javafx.fxml' ] // Módulos de JavaFX que se van a utilizar
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
 application {
     // Configuración de la aplicación
-    mainClassName = 'com.example.MainApp' // Clase principal de la aplicación
+    mainClassName = 'com.example.MainApp'
 }
