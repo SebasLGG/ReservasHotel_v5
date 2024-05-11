@@ -1,35 +1,56 @@
 plugins {
     id 'java'
-    id 'application' // Agregamos el plugin application para ejecutar la aplicación
-    id 'org.openjfx.javafxplugin' version '0.0.10' // Plugin para JavaFX
+    id 'application'
+    id 'org.javamodularity.moduleplugin' version '1.8.12'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
+    id 'org.beryx.jlink' version '2.25.0'
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+group 'com.example'
+version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
     maven { url 'https://jitpack.io' }
 }
 
-dependencies {
-    testImplementation platform('org.junit:junit-bom:5.9.1')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testImplementation 'org.junit.platform:junit-platform-suite-engine:1.9.1'
-    implementation 'com.github.JRJimenezReyes:entrada:1.0.3'
-    implementation 'org.mongodb:mongodb-driver-sync:4.4.2'
-    
-    // Dependencias de JavaFX
-    implementation 'org.openjfx:javafx-controls:16.0.2'
-    implementation 'org.openjfx:javafx-fxml:16.0.2'
+ext {
+    junitVersion = '5.9.2'
+}
+
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }
 
 javafx {
-    version = "16.0.2" // Versión de JavaFX
-    modules = [ 'javafx.controls', 'javafx.fxml' ]
+    version = '17.0.6'
+    modules = ['javafx.controls', 'javafx.fxml', 'javafx.web', 'javafx.swing']
 }
 
-application {
-    // Configuración de la aplicación
-    mainClassName = 'com.example.MainApp'
+dependencies {
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    implementation 'com.github.JRJimenezReyes:entrada:1.0.3'
+    implementation 'org.mongodb:mongodb-driver-sync:4.4.2'
+    implementation('org.controlsfx:controlsfx:11.1.2')
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jlink {
+    imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip")
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+    launcher {
+        name = 'app'
+    }
+}
+
+jlinkZip {
+    group = 'distribution'
 }
